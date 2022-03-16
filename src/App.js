@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Provider } from "react-redux";
 
 import Expenses from "./component/Expenses";
 import NewExpense from "./component/NewExpense";
+import store from "./component/store";
 
 // const DUMMY_EXPENSES = [
 //     {
@@ -69,8 +71,10 @@ const App = () => {
     }
     return (
         <div>
-            <NewExpense onAddExpense={addExpenseHandler} />
-            <Expenses items={expenses} />
+            <Provider store={store}>
+                <NewExpense onAddExpense={addExpenseHandler} />
+                <Expenses items={expenses} />
+            </Provider>
         </div>
     );
 }
